@@ -14,11 +14,11 @@ public class ColorActivity extends AppCompatActivity {
         EditText editTextCyan = (EditText) findViewById(R.id.txt_cyan);
         EditText editTextMagenta = (EditText) findViewById(R.id.txt_magenta);
         EditText editTextYellow = (EditText) findViewById(R.id.txt_yellow);
-        EditText editTextKontrast = (EditText) findViewById(R.id.txt_kontrast);
+        EditText editTextKey = (EditText) findViewById(R.id.txt_key);
         disableField(editTextCyan);
         disableField(editTextMagenta);
         disableField(editTextYellow);
-        disableField(editTextKontrast);
+        disableField(editTextKey);
 
     }
 

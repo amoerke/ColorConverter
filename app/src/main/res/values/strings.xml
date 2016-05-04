@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">Color Converter</string>
+    <string name="cyan">Cyan:</string>
+    <string name="magenta">Magenta:</string>
+    <string name="yellow">Yellow:</string>
+    <string name="key">Key:</string>
+    <string name="red">Enter red</string>
+    <string name="green">Enter green</string>
+    <string name="blue">Enter blue</string>
+    <string name="convert">Convert</string>
 </resources>
