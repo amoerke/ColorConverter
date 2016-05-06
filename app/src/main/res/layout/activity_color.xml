@@ -34,10 +34,12 @@
                     />
                 <EditText
                     android:id="@+id/txt_cyan"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
+                    android:maxLength="5"
+                    android:text="@{String.valueOf(handler.cyan)}"
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
@@ -57,10 +59,12 @@
                     />
                 <EditText
                     android:id="@+id/txt_magenta"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(handler.magenta)}"
                     android:layout_column="1"
+                    android:maxLength="5"
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
@@ -79,9 +83,11 @@
                     />
                 <EditText
                     android:id="@+id/txt_yellow"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_width="wrap_content"
+                    android:text="@{String.valueOf(handler.yellow)}"
                     android:layout_height="wrap_content"
+                    android:maxLength="5"
                     android:layout_column="1"
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
@@ -101,7 +107,9 @@
                     />
                 <EditText
                     android:id="@+id/txt_key"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
+                    android:maxLength="5"
+                    android:text="@{String.valueOf(handler.key)}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="1"
@@ -169,7 +177,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <EditText
-                    android:id="@+id/rateLabel"
+                    android:id="@+id/txt_blue"
                     android:inputType="number"
                     android:maxLength="3"
                     android:layout_width="wrap_content"
@@ -192,7 +200,27 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"/>
             </TableRow>
+
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="@{handler.hexstr}"
+                    android:layout_span="3"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/txtHexColor"
+                    android:layout_column="0"
+                    android:textSize="32sp"
+                    android:gravity="center" />
+            </TableRow>
         </TableLayout>
+
+
 
         <ImageView
             android:layout_width="150dp"
@@ -200,7 +228,9 @@
             android:id="@+id/imageView"
             android:layout_gravity="center_vertical|right|top"
             android:layout_margin="20dp"
-            android:background="#d52929" />
+            android:padding="2dp"
+            android:background="@drawable/image_border"
+            android:src="@{handler.rgbcolor}"/>
     </FrameLayout>
 
 </layout>
