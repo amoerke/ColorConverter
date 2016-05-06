@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://schemas.android.com/tools">
     <data>
         <variable
             name="handler"
             type="de.fenomedia.colorconverter.MainBindingHandlers"/>
     </data>
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <FrameLayout
         android:orientation="vertical"
         android:background="@color/panelColor"
         android:layout_width="match_parent"
@@ -119,6 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLength="3"
+                    android:text="@{String.valueOf(handler.red)}"
                     android:layout_column="0"
                     android:layout_span="2"
                     android:hint="@string/red" />
@@ -128,6 +130,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="255"
+                    android:tag="redSeek"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"
@@ -144,6 +149,7 @@
                     android:layout_column="0"
                     android:layout_span="2"
                     android:maxLength="3"
+                    android:text="@{String.valueOf(handler.green)}"
                     android:layout_gravity="center_vertical"
                     android:hint="@string/green" />
 
@@ -152,8 +158,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:max="255"
+                    android:tag="greenSeek"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="10dp"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
                     android:layout_weight="1"/>
             </TableRow>
             <TableRow
@@ -166,6 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
+                    android:text="@{String.valueOf(handler.blue)}"
                     android:layout_span="2"
                     android:layout_gravity="center_vertical"
                     android:hint="@string/blue" />
@@ -175,6 +185,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="255"
+                    android:tag="blueSeek"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"/>

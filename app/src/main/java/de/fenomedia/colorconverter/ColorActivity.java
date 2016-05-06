@@ -1,8 +1,11 @@
 package de.fenomedia.colorconverter;
 
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.EditText;
+
+import de.fenomedia.colorconverter.databinding.ActivityColorBinding;
 
 public class ColorActivity extends AppCompatActivity {
 
@@ -19,6 +22,13 @@ public class ColorActivity extends AppCompatActivity {
         disableField(editTextMagenta);
         disableField(editTextYellow);
         disableField(editTextKey);
+
+        // Add binding to seekbars
+        int red = 0;
+        ActivityColorBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_color);
+        MainBindingHandlers handler = new MainBindingHandlers();
+        binding.setHandler(handler);
+
 
     }
 
