@@ -4,8 +4,8 @@
     <string name="magenta">Magenta:</string>
     <string name="yellow">Yellow:</string>
     <string name="key">Key:</string>
-    <string name="red">Enter red</string>
-    <string name="green">Enter green</string>
-    <string name="blue">Enter blue</string>
+    <string name="red">Red:</string>
+    <string name="green">Green:</string>
+    <string name="blue">Blue:</string>
     <string name="convert">Convert</string>
 </resources>

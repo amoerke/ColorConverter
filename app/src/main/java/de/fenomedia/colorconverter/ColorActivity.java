@@ -33,9 +33,10 @@ public class ColorActivity extends AppCompatActivity {
         SeekBar redSeek = (SeekBar) findViewById(R.id.seek_red);
         SeekBar blueSeek = (SeekBar) findViewById(R.id.seek_blue);
         SeekBar greenSeek = (SeekBar) findViewById(R.id.seek_green);
-        editTextRed.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextRed, redSeek));
-        editTextGreen.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextGreen, greenSeek));
-        editTextBlue.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextBlue, blueSeek));
+        // TODO: Implement OnFocusChangedListener
+        //editTextRed.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextRed, redSeek));
+        //editTextGreen.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextGreen, greenSeek));
+        //editTextBlue.addTextChangedListener(new MainBindingHandlers().new CustomTextWatcher(editTextBlue, blueSeek));
 
         binding.setHandler(handler);
 

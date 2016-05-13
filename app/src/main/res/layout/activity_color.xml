@@ -7,7 +7,7 @@
             type="de.fenomedia.colorconverter.MainBindingHandlers"/>
     </data>
 
-    <FrameLayout
+    <LinearLayout
         android:orientation="vertical"
         android:background="@color/panelColor"
         android:layout_width="match_parent"
@@ -17,7 +17,7 @@
 
         <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_margin="10dp">
             <!-- CMYK -->
             <TableRow
@@ -43,6 +43,17 @@
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
+                <SeekBar
+                    android:id="@+id/seek_cyan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="100"
+                    android:tag="cyanSeek"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
 
             </TableRow>
             <TableRow
@@ -68,6 +79,17 @@
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
+                <SeekBar
+                    android:id="@+id/seek_magenta"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="100"
+                    android:tag="magentaSeek"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -92,6 +114,17 @@
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
+                <SeekBar
+                    android:id="@+id/seek_yellow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="100"
+                    android:tag="keyYellow"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
             </TableRow>
             <TableRow
                 android:layout_width="match_parent"
@@ -116,22 +149,58 @@
                     android:ems="3"
                     android:layout_gravity="center_horizontal"
                     />
+                <SeekBar
+                    android:id="@+id/seek_key"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="2"
+                    android:setOnSeekBarChangeListener="@{handler.seekBarChangeListener}"
+                    android:max="100"
+                    android:tag="keySeek"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"/>
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:layout_marginBottom="20dp">
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dip"
+                    android:padding="2dp"
+                    android:background="#dedede"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_column="0"
+                    android:layout_weight="1"
+                    android:layout_span="4">
+                </View>
+
             </TableRow>
             <!-- RGB -->
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp">
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="@string/red"
+                    android:id="@+id/lbl_red"
+                    android:ems="4"
+                    android:layout_gravity="center_vertical" />
                 <EditText
                     android:id="@+id/txt_red"
-                    android:inputType="number"
+                    android:inputType="numberDecimal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
                     android:maxLength="3"
+                    android:ems="3"
                     android:text="@{String.valueOf(handler.red)}"
-                    android:layout_column="0"
-                    android:layout_span="2"
-                    android:hint="@string/red" />
+                    android:layout_column="1" />
 
                 <SeekBar
                     android:id="@+id/seek_red"
@@ -149,17 +218,22 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="@string/green"
+                    android:id="@+id/lbl_greem"
+                    android:ems="4"
+                    android:layout_gravity="center_vertical" />
                 <EditText
                     android:inputType="number"
                     android:id="@+id/txt_green"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
-                    android:layout_span="2"
+                    android:layout_column="1"
                     android:maxLength="3"
-                    android:text="@{String.valueOf(handler.green)}"
-                    android:layout_gravity="center_vertical"
-                    android:hint="@string/green" />
+                    android:text="@{String.valueOf(handler.green)}" />
 
                 <SeekBar
                     android:id="@+id/seek_green"
@@ -176,17 +250,23 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_column="0"
+                    android:text="@string/blue"
+                    android:id="@+id/lbl_blue"
+                    android:ems="4"
+                    android:layout_gravity="center_vertical" />
                 <EditText
                     android:id="@+id/txt_blue"
                     android:inputType="number"
                     android:maxLength="3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_column="0"
+                    android:layout_column="1"
                     android:text="@{String.valueOf(handler.blue)}"
-                    android:layout_span="2"
-                    android:layout_gravity="center_vertical"
-                    android:hint="@string/blue" />
+                    android:layout_gravity="center_vertical" />
 
                 <SeekBar
                     android:id="@+id/seek_blue"
@@ -200,37 +280,55 @@
                     android:layout_gravity="center_vertical"
                     android:layout_weight="1"/>
             </TableRow>
-
-
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="0dp">
+                <View
+                    android:layout_height="1dp"
+                    android:layout_width="match_parent"
+                    android:background="#DEDEDE"
+                    android:layout_weight="1"/>
+
+            </TableRow>
+
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:padding="5dp">
 
                 <TextView
+
                     android:text="@{handler.hexstr}"
-                    android:layout_span="3"
-                    android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_width="match_parent"
+                    android:ems="3"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="150dp"
                     android:layout_height="match_parent"
                     android:id="@+id/txtHexColor"
-                    android:layout_column="0"
-                    android:textSize="32sp"
+                    android:textSize="20sp"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight=".1"
                     android:gravity="center" />
-            </TableRow>
-        </TableLayout>
 
 
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_column="1"
+                    android:layout_weight=".9"
+                    android:layout_span="2"
+                    android:id="@+id/imageView"
+                    android:layout_gravity="top|left|right|bottom"
+                    android:background="@drawable/image_border"
+                    android:src="@{handler.rgbcolor}"/>
 
-        <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
-            android:id="@+id/imageView"
-            android:layout_gravity="center_vertical|right|top"
-            android:layout_margin="20dp"
-            android:padding="2dp"
-            android:background="@drawable/image_border"
-            android:src="@{handler.rgbcolor}"/>
-    </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
 
 </layout>

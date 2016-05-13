@@ -130,24 +130,55 @@ public class MainBindingHandlers extends BaseObservable {
     public final SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
         @Override
         public void onProgressChanged(SeekBar seekBar, int progress, boolean b) {
+            boolean calculateCMYK = false;
+            float value = 0;
+
             switch (seekBar.getId()){
                 case R.id.seek_red:
                     setRed(progress);
+                    calculateCMYK = true;
                     break;
                 case R.id.seek_green:
                     setGreen(progress);
+                    calculateCMYK = true;
                     break;
                 case R.id.seek_blue:
+                    calculateCMYK = true;
                     setBlue(progress);
+                case R.id.seek_cyan:
+                    value = ((float)progress / 100f);
+                    setCyan(value);
+                    break;
+                case R.id.seek_magenta:
+                    value = ((float)progress / 100f);
+                    setMagenta(value);
+                    break;
+                case R.id.seek_yellow:
+                    value = ((float)progress / 100f);
+                    setYellow(value);
+                    break;
+                case R.id.seek_key:
+                    value = ((float)progress / 100f);
+                    setKey(value);
+                    break;
+
             }
+
+            if(calculateCMYK) {
+                float[] list = ColorUtils.getCMYK(getRed(), getGreen(), getBlue());
+                setCyan(list[0]);
+                setMagenta(list[1]);
+                setYellow(list[2]);
+                setKey(list[3]);
+            }else{
+                int[] list = ColorUtils.getRGB(getCyan(), getMagenta(), getYellow(), getKey());
+                setRed(list[0]);
+                setGreen(list[1]);
+                setBlue(list[2]);
+            }
+
             setHexstr(String.format("#%06X", (0xFFFFFF & Color.rgb(getRed(), getGreen(), getBlue()))));
             setRgbcolor(Color.rgb(getRed(), getGreen(), getBlue()));
-
-            float[] list = ColorUtils.getCMYK(getRed(),getGreen(),getBlue());
-            setCyan(list[0]);
-            setMagenta(list[1]);
-            setYellow(list[2]);
-            setKey(list[3]);
         }
 
         @Override
