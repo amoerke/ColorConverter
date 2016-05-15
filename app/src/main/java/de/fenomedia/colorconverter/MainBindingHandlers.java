@@ -8,6 +8,7 @@ import android.databinding.ObservableInt;
 import android.graphics.Color;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.widget.EditText;
 import android.widget.SeekBar;
 
@@ -27,6 +28,7 @@ public class MainBindingHandlers extends BaseObservable {
     public ObservableFloat yellow = new ObservableFloat();
     public ObservableFloat key = new ObservableFloat();
     public ObservableField<String> hexstr = new ObservableField<>();
+    public static boolean mCmykActive = false;
 
     @Bindable
     public String getHexstr(){
@@ -146,6 +148,7 @@ public class MainBindingHandlers extends BaseObservable {
                     calculateCMYK = true;
                     setBlue(progress);
                 case R.id.seek_cyan:
+                    Log.d("Color Converter ", "onProgressChanged: OBEN");
                     value = ((float)progress / 100f);
                     setCyan(value);
                     break;
@@ -164,12 +167,16 @@ public class MainBindingHandlers extends BaseObservable {
 
             }
 
+
             if(calculateCMYK) {
-                float[] list = ColorUtils.getCMYK(getRed(), getGreen(), getBlue());
-                setCyan(list[0]);
-                setMagenta(list[1]);
-                setYellow(list[2]);
-                setKey(list[3]);
+                if(MainBindingHandlers.mCmykActive == false) {
+                    Log.d("Color Converter ", "onProgressChanged: " + MainBindingHandlers.mCmykActive);
+                    float[] list = ColorUtils.getCMYK(getRed(), getGreen(), getBlue());
+                    setCyan(list[0]);
+                    setMagenta(list[1]);
+                    setYellow(list[2]);
+                    setKey(list[3]);
+                }
             }else{
                 int[] list = ColorUtils.getRGB(getCyan(), getMagenta(), getYellow(), getKey());
                 setRed(list[0]);
@@ -182,10 +189,24 @@ public class MainBindingHandlers extends BaseObservable {
         }
 
         @Override
-        public void onStartTrackingTouch(SeekBar seekBar) {  }
+        public void onStartTrackingTouch(SeekBar seekBar) {
+            switch(seekBar.getId()){
+                case R.id.seek_cyan:
+                case R.id.seek_magenta:
+                case R.id.seek_yellow:
+                case R.id.seek_key:
+                    MainBindingHandlers.mCmykActive = true;
+                    break;
+                default:
+                    MainBindingHandlers.mCmykActive = false;
+            }
+
+        }
 
         @Override
-        public void onStopTrackingTouch(SeekBar seekBar) {    }
+        public void onStopTrackingTouch(SeekBar seekBar) {
+
+        }
 
 
     };
